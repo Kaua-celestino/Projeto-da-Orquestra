@@ -1,4 +1,4 @@
-package gestao_orquestra.EXCEPTIONS;
+package gestao_orquestra.exceptions;
 
 public class RepositorioCheioException extends Exception{
     public RepositorioCheioException() {

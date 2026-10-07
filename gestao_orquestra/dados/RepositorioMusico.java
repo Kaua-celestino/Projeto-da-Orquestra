@@ -1,8 +1,8 @@
-package gestao_orquestra.DADOS;
+package gestao_orquestra.dados;
 
 import gestao_orquestra.model.Musico;
-import gestao_orquestra.EXCEPTIONS.MusicoNaoEncontradoException;
-import gestao_orquestra.EXCEPTIONS.RepositorioCheioException;
+import gestao_orquestra.exceptions.MusicoNaoEncontradoException;
+import gestao_orquestra.exceptions.RepositorioCheioException;
 
 
 public class RepositorioMusico {

@@ -1,4 +1,4 @@
-package gestao_orquestra.EXCEPTIONS;
+package gestao_orquestra.exceptions;
 
 public class MusicoNaoEncontradoException extends Exception{
     public MusicoNaoEncontradoException(){
