@@ -41,7 +41,7 @@ public class RepositorioEmprestimo {
         throw new EmprestimoNaoEncontradoException(cpfMusico, codigoTombamento);
     }
 
-    public void Atualizar(Emprestimo emprestimoAtualizado) throws EmprestimoNaoEncontradoException {
+    public void atualizar(Emprestimo emprestimoAtualizado) throws EmprestimoNaoEncontradoException {
             for(int i = 0; i < this.indice; i++) {
                 Emprestimo emp = this.emprestimos[i];
                 if (emp.getMusico().getCpf().equals(emprestimoAtualizado.getMusico().getCpf()) &&
