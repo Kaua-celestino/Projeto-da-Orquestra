@@ -1,5 +1,6 @@
 package gestao_orquestra.dados;
 
+import gestao_orquestra.model.EstadoConservacao;
 import gestao_orquestra.model.Instrumento;
 import gestao_orquestra.exceptions.InstrumentoNaoEncontradoException;
 import gestao_orquestra.exceptions.RepositorioCheioException;
@@ -54,5 +55,25 @@ public class RepositorioInstrumento {
             }
         }
         throw new InstrumentoNaoEncontradoException(codigoTombamento);
+    }
+
+    public Instrumento[] listarEmManutencao() {
+        int cont = 0;
+        //1. Conta quantos instrumentos estão em manutenção/lutheria
+        for (int i = 0; i < this.indice; i++) {
+            if (this.instrumentos[i].getEstado() == EstadoConservacao.PRECISA_REPARO) {
+                cont++;
+            }
+        }
+
+        //2. Cria um array com o tamanho exato encontrado
+        Instrumento[] emManutencao = new Instrumento[cont];
+        int aux = 0;
+        for (int i = 0; i < this.indice; i++) {
+            if (this.instrumentos[i].getEstado() == EstadoConservacao.PRECISA_REPARO) {
+                emManutencao[aux] = this.instrumentos[i];
+            }
+        }
+        return emManutencao;
     }
 }

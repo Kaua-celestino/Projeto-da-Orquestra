@@ -35,4 +35,8 @@ public class CadastroInstrumento {
     public void remover(String codigoTombamento) throws InstrumentoNaoEncontradoException {
         repositorio.remover(codigoTombamento);
     }
+
+    public Instrumento[] listarEmManutencao() {
+        return this.repositorio.listarEmManutencao();
+    }
 }

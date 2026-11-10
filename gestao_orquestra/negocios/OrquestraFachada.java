@@ -104,4 +104,12 @@ public class OrquestraFachada {
     public void retornarEmprestimo(String cpfMusico, String codigoTombamento) throws EmprestimoNaoEncontradoException {
         this.cadastroEmprestimo.devolverEmprestimo(cpfMusico, codigoTombamento);
     }
+
+    //================================
+    //DELEGAÇÕES DE PDF
+    //================================
+    public void gerarRelatorioLutheriaPDF(String caminhoArquivo) throws Exception {
+        Instrumento[] listaManutencao = this.cadastroInstrumento.listarEmManutencao();
+        GeradorPDF.gerarRelatorioLutheria(listaManutencao, caminhoArquivo);
+    }
 }
