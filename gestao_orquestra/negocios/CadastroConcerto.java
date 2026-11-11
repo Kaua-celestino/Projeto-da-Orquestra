@@ -85,5 +85,9 @@ public class CadastroConcerto {
             throw new ConcertoInviavelException(nomeEspetaculo, "Percussão");
         }
     }
+
+    public Concerto[] listarTodos() {
+        return this.repositorio.listarTodos();
+    }
 }
 

@@ -51,4 +51,12 @@ public class RepositorioUsuario {
             }
         } throw new UsuarioNaoEncontradoException(login);
     }
+
+    public Usuario[] listarTodos() {
+        Usuario[] copia = new Usuario[this.indice];
+        for (int i = 0; i < this.indice; i++) {
+            copia[i] = this.usuarios[i];
+        }
+        return copia;
+    }
 }

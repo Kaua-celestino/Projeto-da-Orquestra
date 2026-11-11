@@ -57,6 +57,14 @@ public class RepositorioInstrumento {
         throw new InstrumentoNaoEncontradoException(codigoTombamento);
     }
 
+    public Instrumento[] listarTodos() {
+        Instrumento[] ativos = new Instrumento[this.indice];
+        for (int i = 0; i < this.indice; i++) {
+            ativos[i] = this.instrumentos[i];
+        }
+        return ativos;
+    }
+
     public Instrumento[] listarEmManutencao() {
         int cont = 0;
         //1. Conta quantos instrumentos estão em manutenção/lutheria

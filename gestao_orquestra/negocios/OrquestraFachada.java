@@ -3,6 +3,7 @@ package gestao_orquestra.negocios;
 import gestao_orquestra.dados.*;
 import gestao_orquestra.model.*;
 import gestao_orquestra.exceptions.*;
+import gestao_orquestra.util.GerenciadorArquivoCSV;
 
 public class OrquestraFachada {
     //A Fachada guarda APENAS as classes de negócios
@@ -43,6 +44,14 @@ public class OrquestraFachada {
         this.cadastroUsuario.remover(login);
     }
 
+    public Usuario buscarUsuario(String login) throws UsuarioNaoEncontradoException {
+        return this.cadastroUsuario.buscar(login);
+    }
+
+    public Usuario[] listarUsuarios() {
+        return this.cadastroUsuario.listarTodos();
+    }
+
     //===============================
     //DELEGRAÇÕES DE CONCERTO
     //===============================
@@ -62,6 +71,10 @@ public class OrquestraFachada {
         this.cadastroConcerto.aprovarConcerto(nomeEspetaculo);
     }
 
+    public Concerto[] listarConcertos() {
+        return this.cadastroConcerto.listarTodos();
+    }
+
     //===============================
     //DELEGAÇÕES DE MÚSICO
     //===============================
@@ -77,6 +90,10 @@ public class OrquestraFachada {
         this.cadastroMusico.remover(cpfMusico);
     }
 
+    public Musico[] listarMusicos() {
+        return this.cadastroMusico.listarTodos();
+    }
+
     //===============================
     //DELEGAÇÕES DE INSTRUMENTO
     //===============================
@@ -89,15 +106,19 @@ public class OrquestraFachada {
         return this.cadastroInstrumento.buscar(codigoTombamento);
     }
 
+    public Instrumento[] listarInstrumentos() {
+        return this.cadastroInstrumento.listarTodos();
+    }
+
     //===============================
     //DELEGAÇÕES DE EMPRÉSTIMO
     //===============================
 
-    public void realizarEmprestimo(Emprestimo emprestimo) throws LimiteEmprestimoExcedidoException, MusicoComPendenciaException, RepositorioCheioException {
-        this.cadastroEmprestimo.registrarEmprestimo(emprestimo);
+    public void cadastroEmprestimo(Emprestimo emprestimo) throws LimiteEmprestimoExcedidoException, MusicoComPendenciaException, RepositorioCheioException {
+        this.cadastroEmprestimo.cadastroEmprestimo(emprestimo);
     }
 
-    public Emprestimo buscarEmprestimo(String cpfMusico, String codigoTombamento) throws EmprestimoNaoEncontradoException{
+    public Emprestimo buscarEmprestimo(String cpfMusico, String codigoTombamento) throws EmprestimoNaoEncontradoException {
         return this.cadastroEmprestimo.buscar(cpfMusico, codigoTombamento);
     }
 
@@ -105,11 +126,58 @@ public class OrquestraFachada {
         this.cadastroEmprestimo.devolverEmprestimo(cpfMusico, codigoTombamento);
     }
 
+    public double calcularMultaEmprestimo(String cpfMusico, String codigoTombamento, double taxaDiaria) throws Exception {
+        Emprestimo emprestimo = this.cadastroEmprestimo.buscar(cpfMusico, codigoTombamento);
+        return emprestimo.calcularMultaEmprestimo(taxaDiaria);
+    }
+
+    public Emprestimo[] listarEmprestimos() {
+        return this.cadastroEmprestimo.listarTodos();
+    }
+
+
     //================================
     //DELEGAÇÕES DE PDF
     //================================
+    public void gerarRelatorioAcervoPDF(String caminhoArquivo) throws Exception {
+        Instrumento[] lista = this.cadastroInstrumento.listarTodos();
+        GeradorPDF.gerarRelatorioAcervo(lista, lista.length, caminhoArquivo);
+    }
+
+    public void gerarProgramaConcertoPDF(String nomeEspetaculo, String caminhoArquivo) throws Exception {
+        Concerto concerto = this.cadastroConcerto.buscar(nomeEspetaculo);
+        GeradorPDF.gerarProgramaConcerto(concerto, caminhoArquivo);
+    }
+
+    public void gerarTermoEmprestimoPDF(String cpfMusico, String codigoTombamento, String caminhoArquivo) throws Exception {
+        Emprestimo emprestimo = this.cadastroEmprestimo.buscar(cpfMusico, codigoTombamento);
+        GeradorPDF.gerarTermoEmprestimo(emprestimo, caminhoArquivo);
+    }
+
     public void gerarRelatorioLutheriaPDF(String caminhoArquivo) throws Exception {
         Instrumento[] listaManutencao = this.cadastroInstrumento.listarEmManutencao();
         GeradorPDF.gerarRelatorioLutheria(listaManutencao, caminhoArquivo);
+    }
+
+    //================================
+    //DELEGAÇÕES DE PERSISTÊNCIA E BACKUP
+    //================================
+
+    public void salvarBackupGeral() throws Exception {
+        GerenciadorArquivoCSV.salvarUsuarios(this.cadastroUsuario.listarTodos(), "usuarios.csv");
+        GerenciadorArquivoCSV.salvarMusicos(this.cadastroMusico.listarTodos(), "musicos.csv");
+        GerenciadorArquivoCSV.salvarInstrumentos(this.cadastroInstrumento.listarTodos(), "instrumentos.csv");
+        GerenciadorArquivoCSV.salvarConcertos(this.cadastroConcerto.listarTodos(), "concertos.csv");
+        GerenciadorArquivoCSV.salvarEmprestimos(this.cadastroEmprestimo.listarTodos(), "emprestimos.csv");
+        System.out.println("-> Backup CSV salvo com sucesso!");
+    }
+
+    public void carregarBackupGeral() {
+        GerenciadorArquivoCSV.carregarUsuarios(this, "usuarios.csv");
+        GerenciadorArquivoCSV.carregarMusicos(this, "musicos.csv");
+        GerenciadorArquivoCSV.carregarInstrumentos(this, "instrumentos.csv");
+        GerenciadorArquivoCSV.carregarConcertos(this, "concertos.csv");
+        GerenciadorArquivoCSV.carregarEmprestimos(this, "emprestimos.csv");
+        System.out.println("-> Backup CSV restaurado em memória com sucesso!");
     }
 }

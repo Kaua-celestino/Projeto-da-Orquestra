@@ -60,4 +60,12 @@ public class RepositorioEmprestimo {
     public int getIndice() {
         return this.indice;
     }
+
+    public Emprestimo[] listarTodos() {
+        Emprestimo[] copia = new Emprestimo[this.indice];
+        for (int i = 0; i < this.indice; i++) {
+            copia[i] = this.emprestimos[i];
+        }
+        return copia;
+    }
 }

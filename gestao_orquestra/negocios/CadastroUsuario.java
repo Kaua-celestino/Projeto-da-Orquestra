@@ -42,4 +42,8 @@ public class CadastroUsuario {
             throw new SenhaIncorretaException();
         }
     }
+
+    public Usuario[] listarTodos() {
+        return this.repositorio.listarTodos();
+    }
 }

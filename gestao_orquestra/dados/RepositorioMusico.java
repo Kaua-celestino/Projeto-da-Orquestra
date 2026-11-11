@@ -60,6 +60,14 @@ public class RepositorioMusico {
         throw new MusicoNaoEncontradoException(cpf);
     }
 
+    public Musico[] listarTodos() {
+        Musico[] copia = new Musico[this.indice];
+        for (int i = 0; i < this.indice; i++) {
+            copia[i] = this.musicos[i];
+        }
+        return copia;
+    }
+
 }
 
 

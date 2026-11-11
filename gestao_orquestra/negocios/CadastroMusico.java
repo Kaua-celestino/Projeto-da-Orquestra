@@ -43,4 +43,8 @@ public class CadastroMusico {
     public void remover(String cpf) throws MusicoNaoEncontradoException {
         repositorio.remover(cpf);
     }
+
+    public Musico[] listarTodos() {
+        return this.repositorio.listarTodos();
+    }
 }

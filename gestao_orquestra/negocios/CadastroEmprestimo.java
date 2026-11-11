@@ -4,7 +4,6 @@ import gestao_orquestra.dados.RepositorioEmprestimo;
 import gestao_orquestra.model.Emprestimo;
 import gestao_orquestra.exceptions.*;
 
-import javax.naming.LimitExceededException;
 import java.time.LocalDate;
 
 public class CadastroEmprestimo {
@@ -14,7 +13,7 @@ public class CadastroEmprestimo {
         this.repositorio = repositorio;
     }
 
-    public void registrarEmprestimo(Emprestimo emprestimo) throws LimiteEmprestimoExcedidoException, MusicoComPendenciaException, RepositorioCheioException {
+    public void cadastroEmprestimo(Emprestimo emprestimo) throws LimiteEmprestimoExcedidoException, MusicoComPendenciaException, RepositorioCheioException {
 
         String cpfMusico = emprestimo.getMusico().getCpf();
 
@@ -76,6 +75,10 @@ public class CadastroEmprestimo {
 
         //Manda o repositório salvar a alteração
         repositorio.atualizar(emprestimo);
+    }
+
+    public Emprestimo[] listarTodos() {
+        return this.repositorio.listarTodos();
     }
 
 }

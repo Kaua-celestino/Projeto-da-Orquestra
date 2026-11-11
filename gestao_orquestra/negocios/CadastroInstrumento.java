@@ -9,7 +9,7 @@ import gestao_orquestra.exceptions.RepositorioCheioException;
 public class CadastroInstrumento {
     private RepositorioInstrumento repositorio;
 
-    public CadastroInstrumento(RepositorioInstrumento instrumento) {
+    public CadastroInstrumento(RepositorioInstrumento repositorio) {
         this.repositorio = repositorio;
     }
 
@@ -34,6 +34,10 @@ public class CadastroInstrumento {
 
     public void remover(String codigoTombamento) throws InstrumentoNaoEncontradoException {
         repositorio.remover(codigoTombamento);
+    }
+
+    public Instrumento[] listarTodos() {
+        return this.repositorio.listarTodos();
     }
 
     public Instrumento[] listarEmManutencao() {

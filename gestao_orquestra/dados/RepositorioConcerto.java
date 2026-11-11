@@ -55,6 +55,14 @@ public class RepositorioConcerto {
         } throw new ConcertoNaoEncontradoException(nomeEspetaculo);
     }
 
+    public Concerto[] listarTodos() {
+        Concerto[] copia = new Concerto[this.indice];
+        for (int i = 0; i < this.indice; i++) {
+            copia[i] = this.concertos[i];
+        }
+        return copia;
+    }
+
     public Concerto[] getTodosConcertos() {
         return this.concertos;
     }
