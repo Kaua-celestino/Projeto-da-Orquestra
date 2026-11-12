@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="550.0" prefWidth="650.0" spacing="15.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Label text="Bem-vindo(a) ao Sistema!" textFill="#1e293b">
+            <font>
+                <Font name="System Bold" size="36.0" />
+            </font>
+        </Label>
+
+        <Label text="Gestão Completa da sua Orquestra" textFill="#3b82f6">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+
+        <Label alignment="CENTER" text="Utilize o menu lateral esquerdo para navegar entre os módulos de Músicos, Acervo de Instrumentos, Empréstimos, Concertos e Relatórios." textAlignment="CENTER" textFill="#475569" wrapText="true">
+            <font>
+                <Font size="16.0" />
+            </font>
+            <VBox.margin>
+                <Insets left="50.0" right="50.0" top="15.0" />
+            </VBox.margin>
+        </Label>
+    </children>
+</VBox>

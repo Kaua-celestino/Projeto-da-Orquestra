@@ -4,19 +4,49 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gestao_orquestra.controller.TelaLoginController">
     <children>
-        <Label layoutX="175.0" layoutY="55.0" text="Gestão de Orquestra">
-            <font>
-                <Font name="System Bold" size="26.0" />
-            </font>
-        </Label>
-        <TextField fx:id="campoLogin" layoutX="226.0" layoutY="135.0" promptText="Login" />
-        <PasswordField fx:id="campoSenha" layoutX="226.0" layoutY="180.0" promptText="Senha" />
-        <Button layoutX="226.0" layoutY="230.0" mnemonicParsing="false" onAction="#fazerLogin" prefWidth="149.0" style="-fx-background-color: #22c55e; -fx-text-fill: white;" text="Entrar" />
-        <Button layoutX="226.0" layoutY="270.0" mnemonicParsing="false" onAction="#abrirTelaCadastro" prefWidth="149.0" text="Cadastrar Novo Usuário" />
+
+        <!-- 1. Imagem de Fundo -->
+        <ImageView fitHeight="400.0" fitWidth="600.0" preserveRatio="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <image>
+                <Image url="@imagem teatro.jpg" />
+            </image>
+        </ImageView>
+
+        <!-- 2. Película escura semi-transparente para dar contraste -->
+        <AnchorPane style="-fx-background-color: rgba(0, 0, 0, 0.6);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+
+        <!-- 3. Card Branco de Login flutuando no centro -->
+        <VBox alignment="CENTER" layoutX="140.0" layoutY="50.0" prefHeight="300.0" prefWidth="320.0" spacing="18.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 30; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 15, 0, 0, 0);">
+            <children>
+                <Label text="Gestão de Orquestra" textFill="#1e293b">
+                    <font>
+                        <Font name="System Bold" size="22.0" />
+                    </font>
+                </Label>
+
+                <VBox spacing="10.0">
+                    <children>
+                        <TextField fx:id="campoLogin" prefHeight="35.0" promptText="Usuário" style="-fx-background-radius: 5;" />
+                        <PasswordField fx:id="campoSenha" prefHeight="35.0" promptText="Senha" style="-fx-background-radius: 5;" />
+                    </children>
+                </VBox>
+
+                <VBox alignment="CENTER" spacing="8.0">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#fazerLogin" prefHeight="35.0" prefWidth="260.0" style="-fx-background-color: #22c55e; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Entrar no Sistema" />
+                        <Button mnemonicParsing="false" onAction="#abrirTelaCadastro" prefWidth="260.0" style="-fx-background-color: transparent; -fx-text-fill: #3b82f6; -fx-underline: true; -fx-cursor: hand;" text="Criar uma nova conta" />
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+
     </children>
 </AnchorPane>

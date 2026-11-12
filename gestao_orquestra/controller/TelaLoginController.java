@@ -33,7 +33,6 @@ public class TelaLoginController {
 
         try {
             Usuario logado = App.getFachada().fazerLogin(login, senha);
-            exibirAlerta(Alert.AlertType.INFORMATION, "Login Efetuado", "Bem-vindo(a), " + logado.getLogin() + "!");
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestao_orquestra/view/MainLayout.fxml"));
             Parent mainRoot = loader.load();

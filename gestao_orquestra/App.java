@@ -5,7 +5,10 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
+import java.io.InputStream;
 
 public class App extends Application {
 
@@ -35,6 +38,12 @@ public class App extends Application {
         primaryStage.setTitle("Sistema de Orquestra - Login");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false); // Impede de maximizar e desconfigurar o layout
+
+        // Define o ícone de violino na barra de título e na barra de tarefas
+        InputStream iconeStream = getClass().getResourceAsStream("/gestao_orquestra/view/icone_violino.png");
+        if (iconeStream != null) {
+            primaryStage.getIcons().add(new Image(iconeStream));
+        }
 
         // 5. Salva o CSV automaticamente quando o utilizador clica no "X" para fechar
         primaryStage.setOnCloseRequest(event -> {
