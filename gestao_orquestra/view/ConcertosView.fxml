@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="550.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gestao_orquestra.controller.ConcertosController">
+    <children>
+        <VBox spacing="12.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+            <children>
+                <Label text="Gestão de Concertos">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                </Label>
+
+                <!-- Formulário de Cadastro de Concerto -->
+                <VBox spacing="8.0">
+                    <children>
+                        <HBox spacing="10.0">
+                            <children>
+                                <TextField fx:id="campoEspetaculo" prefWidth="310.0" promptText="Nome do Espetáculo" />
+                                <TextField fx:id="campoLocal" prefWidth="300.0" promptText="Local (ex: Teatro de Santa Isabel)" />
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                            <children>
+                                <DatePicker fx:id="dataConcertoPicker" prefWidth="170.0" promptText="Data do Concerto" />
+                                <ComboBox fx:id="comboMaestro" prefWidth="230.0" promptText="Maestro Responsável" />
+                                <Button mnemonicParsing="false" onAction="#cadastrarConcerto" style="-fx-background-color: #22c55e; -fx-text-fill: white;" text="Cadastrar Concerto" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+                <!-- Tabela de Concertos -->
+                <TableView fx:id="tabelaConcertos" prefHeight="250.0" prefWidth="620.0" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colunaEspetaculo" prefWidth="175.0" text="Espetáculo" />
+                        <TableColumn fx:id="colunaData" prefWidth="90.0" text="Data" />
+                        <TableColumn fx:id="colunaLocal" prefWidth="165.0" text="Local" />
+                        <TableColumn fx:id="colunaMaestro" prefWidth="105.0" text="Maestro" />
+                        <TableColumn fx:id="colunaEscalados" prefWidth="85.0" text="Escalados" />
+                    </columns>
+                </TableView>
+
+                <Separator />
+
+                <!-- Painel de Escalação e Aprovação do Concerto Selecionado -->
+                <VBox spacing="8.0">
+                    <children>
+                        <Label fx:id="labelConcertoSelecionado" text="Selecione um concerto na tabela acima para gerenciar músicos e validar:">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
+
+                        <HBox alignment="CENTER_LEFT" spacing="8.0">
+                            <children>
+                                <ComboBox fx:id="comboMusicoEscalar" prefWidth="210.0" promptText="Músico para escalar" />
+                                <Button mnemonicParsing="false" onAction="#escalarMusico" style="-fx-background-color: #3b82f6; -fx-text-fill: white;" text="Escalar" />
+                                <ComboBox fx:id="comboMusicoRemover" prefWidth="210.0" promptText="Músicos escalados" />
+                                <Button mnemonicParsing="false" onAction="#removerMusicoEscalado" style="-fx-background-color: #f59e0b; -fx-text-fill: white;" text="Desescalar" />
+                            </children>
+                        </HBox>
+
+                        <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                            <children>
+                                <Button mnemonicParsing="false" onAction="#aprovarConcerto" style="-fx-background-color: #10b981; -fx-text-fill: white;" text="Validar / Aprovar Concerto" />
+                                <Button mnemonicParsing="false" onAction="#removerConcerto" style="-fx-background-color: #ef4444; -fx-text-fill: white;" text="Remover Concerto" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

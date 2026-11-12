@@ -47,6 +47,7 @@ public class RepositorioEmprestimo {
                 if (emp.getMusico().getCpf().equals(emprestimoAtualizado.getMusico().getCpf()) &&
                     emp.getInstrumento().getCodigoTombamento().equals(emprestimoAtualizado.getInstrumento().getCodigoTombamento())) {
                     this.emprestimos[i] = emprestimoAtualizado;
+                    return;
                 }
             }
             throw new EmprestimoNaoEncontradoException(emprestimoAtualizado.getMusico().getCpf(), emprestimoAtualizado.getInstrumento().getCodigoTombamento());

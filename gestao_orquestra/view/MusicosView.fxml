@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="550.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gestao_orquestra.controller.MusicosController">
+    <children>
+        <VBox spacing="15.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+            <children>
+                <Label text="Gestão de Músicos">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                </Label>
+
+                <VBox spacing="10.0">
+                    <children>
+                        <!-- Primeira linha do formulário -->
+                        <HBox spacing="10.0">
+                            <children>
+                                <TextField fx:id="campoCpf" prefWidth="130.0" promptText="CPF (Sem traços)" />
+                                <TextField fx:id="campoNome" prefWidth="250.0" promptText="Nome Completo" />
+                                <TextField fx:id="campoEmail" prefWidth="200.0" promptText="Email" />
+                            </children>
+                        </HBox>
+
+                        <!-- Segunda linha do formulário -->
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                            <children>
+                                <ComboBox fx:id="comboNaipe" prefWidth="150.0" promptText="Naipe Principal" />
+                                <TextField fx:id="campoNivel" prefWidth="100.0" promptText="Nível Técnico" />
+                                <Button mnemonicParsing="false" onAction="#cadastrarMusico" style="-fx-background-color: #22c55e; -fx-text-fill: white;" text="Cadastrar Músico" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+                <!-- Tabela com as 5 colunas -->
+                <TableView fx:id="tabelaMusicos" prefHeight="400.0" prefWidth="620.0" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colunaCpf" prefWidth="100.0" text="CPF" />
+                        <TableColumn fx:id="colunaNome" prefWidth="190.0" text="Nome" />
+                        <TableColumn fx:id="colunaEmail" prefWidth="150.0" text="Email" />
+                        <TableColumn fx:id="colunaNaipe" prefWidth="90.0" text="Naipe" />
+                        <TableColumn fx:id="colunaNivel" prefWidth="70.0" text="Nível" />
+                    </columns>
+                </TableView>
+
+                <HBox alignment="CENTER_RIGHT">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#removerMusico" style="-fx-background-color: #ef4444; -fx-text-fill: white;" text="Remover Músico Selecionado" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

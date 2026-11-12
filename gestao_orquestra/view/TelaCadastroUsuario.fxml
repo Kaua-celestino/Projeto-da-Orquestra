@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gestao_orquestra.controller.TelaCadastroUsuarioController">
+    <children>
+        <Label layoutX="182.0" layoutY="40.0" text="Cadastro de Usuário">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Label>
+        <TextField fx:id="campoNovoLogin" layoutX="210.0" layoutY="105.0" prefWidth="180.0" promptText="Login" />
+        <PasswordField fx:id="campoNovaSenha" layoutX="210.0" layoutY="148.0" prefWidth="180.0" promptText="Senha" />
+        <PasswordField fx:id="campoConfirmarSenha" layoutX="210.0" layoutY="191.0" prefWidth="180.0" promptText="Confirmar Senha" />
+        <ComboBox fx:id="comboPerfil" layoutX="210.0" layoutY="234.0" prefWidth="180.0" promptText="Perfil de Acesso" />
+        <Button layoutX="210.0" layoutY="285.0" mnemonicParsing="false" onAction="#cadastrarUsuario" prefWidth="180.0" style="-fx-background-color: #22c55e; -fx-text-fill: white;" text="Cadastrar" />
+        <Button layoutX="210.0" layoutY="325.0" mnemonicParsing="false" onAction="#voltarLogin" prefWidth="180.0" text="Voltar ao Login" />
+    </children>
+</AnchorPane>

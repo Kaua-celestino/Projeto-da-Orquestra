@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="550.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gestao_orquestra.controller.InstrumentosController">
+    <children>
+        <VBox spacing="15.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+            <children>
+                <Label text="Gestão de Acervo / Instrumentos">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                </Label>
+
+                <VBox spacing="10.0">
+                    <children>
+                        <!-- Primeira linha do formulário -->
+                        <HBox spacing="10.0">
+                            <children>
+                                <ComboBox fx:id="comboTipo" prefWidth="140.0" promptText="Tipo" />
+                                <TextField fx:id="campoTombamento" prefWidth="150.0" promptText="Cód. Tombamento" />
+                                <TextField fx:id="campoNome" prefWidth="280.0" promptText="Nome (ex: Violino, Caixa, Clarinete)" />
+                            </children>
+                        </HBox>
+
+                        <!-- Segunda linha do formulário (adapta ao tipo escolhido) -->
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                            <children>
+                                <ComboBox fx:id="comboEstado" prefWidth="180.0" promptText="Estado de Conservação" />
+                                <TextField fx:id="campoEspecifico" prefWidth="190.0" promptText="Selecione o tipo primeiro" />
+                                <CheckBox fx:id="checkUsaBaquetas" managed="false" mnemonicParsing="false" text="Usa Baquetas?" visible="false" />
+                                <Button mnemonicParsing="false" onAction="#cadastrarInstrumento" style="-fx-background-color: #22c55e; -fx-text-fill: white;" text="Cadastrar Instrumento" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+                <!-- Tabela do Acervo -->
+                <TableView fx:id="tabelaInstrumentos" prefHeight="400.0" prefWidth="620.0" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colunaTombamento" prefWidth="105.0" text="Tombamento" />
+                        <TableColumn fx:id="colunaNome" prefWidth="145.0" text="Nome" />
+                        <TableColumn fx:id="colunaFamilia" prefWidth="95.0" text="Família" />
+                        <TableColumn fx:id="colunaEstado" prefWidth="120.0" text="Estado" />
+                        <TableColumn fx:id="colunaDetalhe" prefWidth="145.0" text="Especificação" />
+                    </columns>
+                </TableView>
+
+                <HBox alignment="CENTER_RIGHT">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#removerInstrumento" style="-fx-background-color: #ef4444; -fx-text-fill: white;" text="Remover Instrumento Selecionado" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

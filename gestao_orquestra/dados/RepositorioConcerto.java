@@ -46,7 +46,7 @@ public class RepositorioConcerto {
         for (int i = 0; i < this.indice; i++) {
             if (this.concertos[i].getNomeEspetaculo().equalsIgnoreCase(nomeEspetaculo)) {
                 for (int j = i; j < this.indice - 1; j++) {
-                    this.concertos[i] = this.concertos[j + 1];
+                    this.concertos[j] = this.concertos[j + 1];
                 }
                 this.concertos[this.indice - 1] = null;
                 this.indice--;

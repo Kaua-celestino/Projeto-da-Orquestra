@@ -80,6 +80,7 @@ public class RepositorioInstrumento {
         for (int i = 0; i < this.indice; i++) {
             if (this.instrumentos[i].getEstado() == EstadoConservacao.PRECISA_REPARO) {
                 emManutencao[aux] = this.instrumentos[i];
+                aux++;
             }
         }
         return emManutencao;

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="550.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gestao_orquestra.controller.RelatoriosController">
+    <children>
+        <VBox spacing="16.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+            <children>
+                <Label text="Central de Relatórios (PDF) e Backup (CSV)">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                </Label>
+
+                <!-- Bloco 1: Relatórios Gerais -->
+                <VBox spacing="8.0">
+                    <children>
+                        <Label text="1. Relatórios Gerais do Patrimônio">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                        <HBox spacing="12.0">
+                            <children>
+                                <Button mnemonicParsing="false" onAction="#gerarPdfAcervo" prefWidth="250.0" style="-fx-background-color: #3b82f6; -fx-text-fill: white;" text="Gerar Relatório do Acervo (PDF)" />
+                                <Button mnemonicParsing="false" onAction="#gerarPdfLutheria" prefWidth="250.0" style="-fx-background-color: #f59e0b; -fx-text-fill: white;" text="Gerar Relatório de Lutheria (PDF)" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+                <Separator />
+
+                <!-- Bloco 2: Termo de Empréstimo -->
+                <VBox spacing="8.0">
+                    <children>
+                        <Label text="2. Termo de Responsabilidade de Empréstimo">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                        <HBox alignment="CENTER_LEFT" spacing="12.0">
+                            <children>
+                                <ComboBox fx:id="comboEmprestimosAtivos" prefWidth="340.0" promptText="Selecione um empréstimo ativo" />
+                                <Button mnemonicParsing="false" onAction="#gerarPdfEmprestimo" prefWidth="220.0" style="-fx-background-color: #3b82f6; -fx-text-fill: white;" text="Gerar Termo de Empréstimo (PDF)" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+                <Separator />
+
+                <!-- Bloco 3: Programa do Concerto -->
+                <VBox spacing="8.0">
+                    <children>
+                        <Label text="3. Programa Oficial de Concerto">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                        <HBox alignment="CENTER_LEFT" spacing="12.0">
+                            <children>
+                                <ComboBox fx:id="comboConcertos" prefWidth="340.0" promptText="Selecione um concerto cadastrado" />
+                                <Button mnemonicParsing="false" onAction="#gerarPdfConcerto" prefWidth="220.0" style="-fx-background-color: #3b82f6; -fx-text-fill: white;" text="Gerar Programa do Concerto (PDF)" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+                <Separator />
+
+                <!-- Bloco 4: Exportação Completa e Backup CSV -->
+                <VBox spacing="10.0">
+                    <children>
+                        <Label text="4. Exportação em Lote e Persistência">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                        <HBox spacing="12.0">
+                            <children>
+                                <Button mnemonicParsing="false" onAction="#gerarTodosPdfs" prefWidth="275.0" style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-font-weight: bold;" text="Gerar Todos os PDFs de Uma Vez" />
+                                <Button mnemonicParsing="false" onAction="#salvarBackupCsv" prefWidth="275.0" style="-fx-background-color: #1e293b; -fx-text-fill: white; -fx-font-weight: bold;" text="Salvar Backup Geral (CSV)" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

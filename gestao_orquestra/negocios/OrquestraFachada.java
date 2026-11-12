@@ -59,6 +59,10 @@ public class OrquestraFachada {
         this.cadastroConcerto.cadastrar(concerto);
     }
 
+    public void removerConcerto(String nomeEspetaculo) throws ConcertoNaoEncontradoException {
+        this.cadastroConcerto.remover(nomeEspetaculo);
+    }
+
     public void escalarMusicoNoConcerto(String nomeEspetaculo, Musico musico) throws ConcertoNaoEncontradoException {
         this.cadastroConcerto.escalarMusicoNoConcerto(nomeEspetaculo, musico);
     }
@@ -104,6 +108,10 @@ public class OrquestraFachada {
 
     public Instrumento buscarInstrumento(String codigoTombamento) throws InstrumentoNaoEncontradoException {
         return this.cadastroInstrumento.buscar(codigoTombamento);
+    }
+
+    public void removerInstrumento(String codigoTombamento) throws InstrumentoNaoEncontradoException {
+        this.cadastroInstrumento.remover(codigoTombamento);
     }
 
     public Instrumento[] listarInstrumentos() {
